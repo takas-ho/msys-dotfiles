@@ -19,6 +19,12 @@ function new_path () {
     echo "$HOME/.$1"
 }
 
+function conv_dos_path () {
+	local dir_name=`dirname "$1"`
+	local file_name=`basename "$1"`
+	echo "$(cd "$dir_name"; cmd.exe /c cd)\\${file_name}"
+}
+
 function ln() {
 	if test -d "$2"
 	then
@@ -27,14 +33,8 @@ function ln() {
 		is_dir=
 	fi
 
-	local cmd_src_dir=`dirname "$2"`
-	local cmd_src_file=`basename "$2"`
-	local cmd_src=$(cd "$cmd_src_dir"; cmd.exe /c cd)\\$cmd_src_file
-
-	local cmd_dest_dir=`dirname "$3"`
-	local cmd_dest_file=`basename "$3"`
-	local cmd_dest=$(cd "$cmd_dest_dir"; cmd.exe /c cd)\\$cmd_dest_file
-
+	local cmd_src=$(conv_dos_path "$2")
+	local cmd_dest=$(conv_dos_path "$3")
 	cmd.exe /c "mklink $is_dir \"$cmd_dest\" \"$cmd_src\""
 }
 
