@@ -17,6 +17,25 @@ function new_path () {
     echo "$HOME/.$1"
 }
 
+function ln() {
+	if test -d "$2"
+	then
+		is_dir="/d"
+	else
+		is_dir=
+	fi
+
+	local cmd_src_dir=`dirname "$2"`
+	local cmd_src_file=`basename "$2"`
+	local cmd_src=$(cd "$cmd_src_dir"; cmd.exe /c cd)\\$cmd_src_file
+
+	local cmd_dest_dir=`dirname "$3"`
+	local cmd_dest_file=`basename "$3"`
+	local cmd_dest=$(cd "$cmd_dest_dir"; cmd.exe /c cd)\\$cmd_dest_file
+
+	cmd.exe /c "mklink $is_dir \"$cmd_dest\" \"$cmd_src\""
+}
+
 # Links the passed filename to its new location
 function link () {
     local filename=$1
