@@ -3,4 +3,6 @@ alias ls='ls --color=auto --show-control-chars'
 alias la='ls --color=auto --show-control-chars -A'
 alias l='ls --color=auto --show-control-chars -CF'
 #alias ex='start .'
-. ~/bin/ssh-homma@daniel-soft
+if [ -f ~/bin/ssh-homma@daniel-soft ]; then
+	source ~/bin/ssh-homma@daniel-soft
+fi
