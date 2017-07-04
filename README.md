@@ -1,0 +1,2 @@
+# msys-dotfiles
+MSYS用
