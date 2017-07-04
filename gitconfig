@@ -30,4 +30,4 @@
 [diff "sjis"]
 	textconv = nkf -w
 [diff "xdoc"]
-	textconv = xdoc2txt.exe -8
+	textconv = xdoc2txt -8
