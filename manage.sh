@@ -1,6 +1,8 @@
 #!/bin/bash
 
-FILES=(`ls | grep -v --file=./.manageignore`)
+cat ./.manageignore  | sed -e s/^M// > ./.manageignore-lf
+FILES=(`ls | grep -v --file=./.manageignore-lf`)
+rm ./.manageignore-lf
 
 function custom_path () {
     for i in "${!PATHS[@]}"
