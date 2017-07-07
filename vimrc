@@ -39,7 +39,7 @@ set wildmode=list:longest
 
 " Tab
 " 不可視文字を可視化
-set list listchars=tab:>-,trail:.,precedes:<,extends:>,eol:$
+set list listchars=tab:>-,trail:･,precedes:<,extends:>
 
 " 検索系
 " 検索文字列が小文字の場合は大文字小文字を区別なく検索する
