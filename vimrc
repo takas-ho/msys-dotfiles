@@ -7,6 +7,7 @@ call neobundle#begin(expand('~/.vim/bundle'))
 
 " neobundle.vim 自身をneobundle.vimで管理する
 NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/neocomplete.vim'
 
 call neobundle#end()
 
