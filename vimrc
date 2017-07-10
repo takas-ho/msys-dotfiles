@@ -57,6 +57,7 @@ augroup cch
 	autocmd WinLeave * set nocursorline
 	autocmd WinEnter,BufRead * set cursorline
 augroup END
+let g:previm_open_cmd = '/c/Program\ Files/Mozilla\ Firefox/firefox.exe'
 augroup PrevimSettings
 	autocmd!
 	autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
