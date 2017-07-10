@@ -1,3 +1,25 @@
+if has('vim_starting')
+	set nocompatible
+	set runtimepath+=~/.vim/bundle/neobundle.vim
+endif
+
+call neobundle#begin(expand('~/.vim/bundle'))
+
+" neobundle.vim 自身をneobundle.vimで管理する
+NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/neocomplete.vim'
+
+call neobundle#end()
+
+filetype plugin indent on
+" プラグインがインストールされているかチェック
+NeoBundleCheck
+
+if !has('vim_starting')
+	" .vimrcを読み込み直したときのための設定
+	call neobundle#call_hook('on_source')
+endif
+
 " コードの色分け
 syntax on
 
@@ -39,7 +61,7 @@ set wildmode=list:longest
 
 " Tab
 " 不可視文字を可視化
-set list listchars=tab:>-,trail:.,precedes:<,extends:>,eol:$
+set list listchars=tab:>-,trail:･,precedes:<,extends:>
 
 " 検索系
 " 検索文字列が小文字の場合は大文字小文字を区別なく検索する
