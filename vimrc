@@ -12,6 +12,9 @@ NeoBundle 'rcmdnk/vim-markdown'
 NeoBundle 'rhysd/vim-gfm-syntax'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'glidenote/memolist.vim'
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
 
 " color
 NeoBundle 'tomasr/molokai'
@@ -53,6 +56,10 @@ augroup cch
 	autocmd! cch
 	autocmd WinLeave * set nocursorline
 	autocmd WinEnter,BufRead * set cursorline
+augroup END
+augroup PrevimSettings
+	autocmd!
+	autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
 :hi clear CursorLine
 :hi CursorLine gui=underline
