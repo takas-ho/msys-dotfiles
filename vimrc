@@ -8,6 +8,8 @@ call neobundle#begin(expand('~/.vim/bundle'))
 " neobundle.vim 自身をneobundle.vimで管理する
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'rcmdnk/vim-markdown'
+NeoBundle 'rhysd/vim-gfm-syntax'
 
 call neobundle#end()
 
@@ -48,6 +50,10 @@ augroup END
 :hi clear CursorLine
 :hi CursorLine gui=underline
 highlight CursorLine ctermbg=blue guibg=black
+" markdown
+hi link htmlItalic LineNr
+hi link htmlBold WarningMsg
+hi link htmlBoldItalic ErrorMsg
 " インデントはスマートインデント
 set smartindent
 " ビープ音を可視化
