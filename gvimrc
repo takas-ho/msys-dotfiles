@@ -1,4 +1,3 @@
-set guifont=ＭＳ_ゴシック:h10
 set columns=128
 set lines=60
 colorscheme  desert
@@ -6,6 +5,8 @@ set background=dark
 
 if has('kaoriya')
 	autocmd GUIEnter * set transparency=240
+	set guifont=MS_GOTHIC:h9
+	set noundofile
 endif
 
 " clipboardを使いたい
