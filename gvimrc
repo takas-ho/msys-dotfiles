@@ -4,6 +4,10 @@ set lines=60
 colorscheme  desert
 set background=dark
 
+if has('kaoriya')
+	autocmd GUIEnter * set transparency=240
+endif
+
 " clipboardを使いたい
 set clipboard=unnamed
 
