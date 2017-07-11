@@ -83,4 +83,7 @@ set hlsearch
 " ESC連打でハイライト解除
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 
-
+"File
+set hidden      "ファイル変更中でも他のファイルを開けるようにする
+set autoread    "ファイル内容が変更されると自動読み込みする
+set nobackup    " バックアップを取らない
