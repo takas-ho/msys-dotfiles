@@ -9,6 +9,9 @@ if has('kaoriya')
 	set noundofile
 endif
 
+" 不可視文字を表示の詳細設定
+set listchars=tab:\▸\ ,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+
 " clipboardを使いたい
 set clipboard=unnamed
 
