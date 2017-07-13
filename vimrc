@@ -10,6 +10,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'rcmdnk/vim-markdown'
 NeoBundle 'rhysd/vim-gfm-syntax'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'glidenote/memolist.vim'
 
 call neobundle#end()
 
@@ -87,3 +89,15 @@ nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 set hidden      "ファイル変更中でも他のファイルを開けるようにする
 set autoread    "ファイル内容が変更されると自動読み込みする
 set nobackup    " バックアップを取らない
+
+let mapleader = "\<Space>"
+
+" memolist
+nnoremap <Leader>mn  :MemoNew<CR>
+nnoremap <Leader>ml  :MemoList<CR>
+nnoremap <Leader>mg  :MemoGrep<CR>
+let g:memolist_memo_suffix = "md"
+let g:memolist_qfixgrep = 1
+let g:memolist_unite = 1
+let g:memolist_unite_source = "file_rec"
+let g:memolist_unite_option = "-auto-preview -start-insert"
