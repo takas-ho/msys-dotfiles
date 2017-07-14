@@ -92,6 +92,8 @@ set nobackup    " バックアップを取らない
 
 let mapleader = "\<Space>"
 
+nnoremap <Leader>ev	:<C-u>tabnew $MYVIMRC<CR>
+
 " memolist
 nnoremap <Leader>mn  :<C-u>MemoNew<CR>
 nnoremap <Leader>ml  :<C-u>MemoList<CR>
