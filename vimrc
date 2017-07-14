@@ -90,6 +90,23 @@ set hidden      "ファイル変更中でも他のファイルを開けるよう
 set autoread    "ファイル内容が変更されると自動読み込みする
 set nobackup    " バックアップを取らない
 
+" ファイル名
+set statusline=%F
+" 変更チェック
+set statusline+=%m
+" 読み込み専用かどうか
+set statusline+=%r
+" ヘルプページなら[HELP]
+set statusline+=%h
+" プレビューウィンドウなら[Preview]
+set statusline+=%w
+" これ以降は右寄せ指定
+set statusline+=%=
+" file encoding
+set statusline+=[ENC=%{&fileencoding}]
+" 現在行数/全行数
+set statusline+=[LOW=%l/%L]
+
 let mapleader = "\<Space>"
 
 nnoremap <Leader>ev	:<C-u>tabnew $MYVIMRC<CR>
