@@ -13,6 +13,9 @@ NeoBundle 'rhysd/vim-gfm-syntax'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'glidenote/memolist.vim'
 
+" color
+NeoBundle 'tomasr/molokai'
+
 call neobundle#end()
 
 filetype plugin indent on

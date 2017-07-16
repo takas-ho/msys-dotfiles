@@ -7,6 +7,7 @@ if has('kaoriya')
 	autocmd GUIEnter * set transparency=240
 	set guifont=MS_GOTHIC:h9
 	set noundofile
+	colorscheme molokai
 endif
 
 nnoremap <Leader>eg	:<C-u>tabnew $MYGVIMRC<CR>
