@@ -30,6 +30,8 @@ endif
 " コードの色分け
 syntax on
 
+colorscheme desert
+
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -88,10 +90,32 @@ set hlsearch
 " ESC連打でハイライト解除
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 
+function! s:MakeDirIfNotExist(directory)
+	if !isdirectory(expand(a:directory))
+		call mkdir(expand(a:directory), 'p')
+	endif
+endfunction
+
 "File
 set hidden      "ファイル変更中でも他のファイルを開けるようにする
 set autoread    "ファイル内容が変更されると自動読み込みする
-set nobackup    " バックアップを取らない
+
+"	backup
+set backup
+set backupdir=$HOME/.tmp/vim/backup
+call s:MakeDirIfNotExist(&backupdir)
+
+"	undo
+if has('persistent_undo')
+	set undolevels=2000
+	set undofile
+	set undodir=$HOME/.tmp/vim/undo
+	call s:MakeDirIfNotExist(&undodir)
+endif
+
+" swap file
+set directory=$HOME/.tmp/vim/swap
+call s:MakeDirIfNotExist(&directory)
 
 " ファイル名
 set statusline=%F
