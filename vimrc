@@ -113,6 +113,10 @@ if has('persistent_undo')
 	call s:MakeDirIfNotExist(&undodir)
 endif
 
+" swap file
+set directory=$HOME/.tmp/vim/swap
+call s:MakeDirIfNotExist(&directory)
+
 " ファイル名
 set statusline=%F
 " 変更チェック
