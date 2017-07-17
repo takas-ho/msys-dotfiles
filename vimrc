@@ -12,6 +12,7 @@ NeoBundle 'rcmdnk/vim-markdown'
 NeoBundle 'rhysd/vim-gfm-syntax'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'glidenote/memolist.vim'
+NeoBundle 'tpope/vim-fugitive'
 
 " color
 NeoBundle 'tomasr/molokai'
@@ -126,11 +127,13 @@ set statusline+=%r
 " ヘルプページなら[HELP]
 set statusline+=%h
 " プレビューウィンドウなら[Preview]
-set statusline+=%w
-" これ以降は右寄せ指定
 set statusline+=%=
 " file encoding
-set statusline+=[ENC=%{&fileencoding}]
+set statusline+=[%{&fileencoding}]
+" file type
+set statusline+=[%{&filetype}]
+" ブランチ名
+set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 " 現在行数/全行数
 set statusline+=[LOW=%l/%L]
 
