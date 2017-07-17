@@ -15,6 +15,13 @@ NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/vimproc.vim', {
+\	'build' : {
+\		'windows' : 'tools\\update-dll-mingw',
+\	},
+\}
 
 " color
 NeoBundle 'tomasr/molokai'
