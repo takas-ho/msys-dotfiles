@@ -6,3 +6,5 @@ alias l='ls --color=auto --show-control-chars -CF'
 if [ -f ~/bin/ssh-homma@daniel-soft ]; then
 	source ~/bin/ssh-homma@daniel-soft
 fi
+alias gvimnew=$HOME/bin/gvim
+alias gvim="gvimnew --remote-tab-silent"

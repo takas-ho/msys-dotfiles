@@ -10,6 +10,11 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'rcmdnk/vim-markdown'
 NeoBundle 'rhysd/vim-gfm-syntax'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'glidenote/memolist.vim'
+
+" color
+NeoBundle 'tomasr/molokai'
 
 call neobundle#end()
 
@@ -83,4 +88,38 @@ set hlsearch
 " ESC連打でハイライト解除
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 
+"File
+set hidden      "ファイル変更中でも他のファイルを開けるようにする
+set autoread    "ファイル内容が変更されると自動読み込みする
+set nobackup    " バックアップを取らない
 
+" ファイル名
+set statusline=%F
+" 変更チェック
+set statusline+=%m
+" 読み込み専用かどうか
+set statusline+=%r
+" ヘルプページなら[HELP]
+set statusline+=%h
+" プレビューウィンドウなら[Preview]
+set statusline+=%w
+" これ以降は右寄せ指定
+set statusline+=%=
+" file encoding
+set statusline+=[ENC=%{&fileencoding}]
+" 現在行数/全行数
+set statusline+=[LOW=%l/%L]
+
+let mapleader = "\<Space>"
+
+nnoremap <Leader>ev	:<C-u>tabnew $MYVIMRC<CR>
+
+" memolist
+nnoremap <Leader>mn  :<C-u>MemoNew<CR>
+nnoremap <Leader>ml  :<C-u>MemoList<CR>
+nnoremap <Leader>mg  :<C-u>MemoGrep<CR>
+let g:memolist_memo_suffix = "md"
+let g:memolist_qfixgrep = 1
+let g:memolist_unite = 1
+let g:memolist_unite_source = "file_rec"
+let g:memolist_unite_option = "-auto-preview -start-insert"
