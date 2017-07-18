@@ -12,6 +12,7 @@ NeoBundle 'rcmdnk/vim-markdown'
 NeoBundle 'rhysd/vim-gfm-syntax'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'glidenote/memolist.vim'
+NeoBundle 'tpope/vim-fugitive'
 
 " color
 NeoBundle 'tomasr/molokai'
@@ -28,9 +29,10 @@ if !has('vim_starting')
 endif
 
 " コードの色分け
-syntax on
+syntax enable
 
-colorscheme desert
+"colorscheme industry
+colorscheme pablo
 
 set tabstop=4
 set softtabstop=4
@@ -45,18 +47,15 @@ set fileencodings=utf-8,sjis
 " 行番号表示
 set number
 "" 現在の行を強調表示
-"set cursorline
+set cursorline
 "" 現在の列を強調表示
 "set cursorcolumn
 " カレントウィンドウにのみ罫線を引く
-augroup cch
-	autocmd! cch
-	autocmd WinLeave * set nocursorline
-	autocmd WinEnter,BufRead * set cursorline
+augroup cursorline
+	autocmd!
+	autocmd WinEnter * setlocal cursorline
+	autocmd WinLeave * setlocal nocursorline
 augroup END
-:hi clear CursorLine
-:hi CursorLine gui=underline
-highlight CursorLine ctermbg=blue guibg=black
 " markdown
 hi link htmlItalic LineNr
 hi link htmlBold WarningMsg
@@ -89,6 +88,23 @@ set wrapscan
 set hlsearch
 " ESC連打でハイライト解除
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
+" 上下移動「論理行」「表示行」を入れ替え
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+" 行末までヤンク
+nnoremap Y y$
+" 日時入力の補助
+inoremap <expr> ,df  strftime('%Y-%m-%dT%H:%M:%S')
+inoremap <expr> ,dd  strftime('%Y-%m-%d')
+inoremap <expr> ,dt  strftime('%H:%M:%S')
+" カーソル下のキーワードをヘルプ表示
+nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><Enter>
+" 最後に変更したテキストを選択
+nnoremap gc `[v`]
+vnoremap gc :<C-u>normal gc<Enter>
+onoremap gc :<C-u>normal gc<Enter>
 
 function! s:MakeDirIfNotExist(directory)
 	if !isdirectory(expand(a:directory))
@@ -126,11 +142,13 @@ set statusline+=%r
 " ヘルプページなら[HELP]
 set statusline+=%h
 " プレビューウィンドウなら[Preview]
-set statusline+=%w
-" これ以降は右寄せ指定
 set statusline+=%=
 " file encoding
-set statusline+=[ENC=%{&fileencoding}]
+set statusline+=[%{&fileencoding}]
+" file type
+set statusline+=[%{&filetype}]
+" ブランチ名
+set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 " 現在行数/全行数
 set statusline+=[LOW=%l/%L]
 
