@@ -93,6 +93,8 @@ noremap j gj
 noremap k gk
 noremap gj j
 noremap gk k
+" 行末までヤンク
+nnoremap Y y$
 
 function! s:MakeDirIfNotExist(directory)
 	if !isdirectory(expand(a:directory))
