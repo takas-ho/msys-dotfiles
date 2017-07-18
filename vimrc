@@ -46,14 +46,14 @@ set fileencodings=utf-8,sjis
 " 行番号表示
 set number
 "" 現在の行を強調表示
-"set cursorline
+set cursorline
 "" 現在の列を強調表示
 "set cursorcolumn
 " カレントウィンドウにのみ罫線を引く
-augroup cch
-	autocmd! cch
-	autocmd WinLeave * set nocursorline
-	autocmd WinEnter,BufRead * set cursorline
+augroup cursorline
+	autocmd!
+	autocmd WinEnter * setlocal cursorline
+	autocmd WinLeave * setlocal nocursorline
 augroup END
 :hi clear CursorLine
 :hi CursorLine gui=underline
