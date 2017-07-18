@@ -31,7 +31,8 @@ endif
 " コードの色分け
 syntax enable
 
-colorscheme desert
+"colorscheme industry
+colorscheme pablo
 
 set tabstop=4
 set softtabstop=4
