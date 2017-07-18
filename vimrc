@@ -6,8 +6,8 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'Shougo/neocomplete.vim'
-Plug 'rcmdnk/vim-markdown'
-Plug 'rhysd/vim-gfm-syntax'
+Plug 'rcmdnk/vim-markdown', { 'for': ['markdown']}
+Plug 'rhysd/vim-gfm-syntax', { 'for': ['markdown']}
 Plug 'Shougo/unite.vim'
 Plug 'glidenote/memolist.vim'
 Plug 'tpope/vim-fugitive'
