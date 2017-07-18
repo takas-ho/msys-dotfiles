@@ -99,6 +99,8 @@ nnoremap Y y$
 inoremap <expr> ,df  strftime('%Y-%m-%dT%H:%M:%S')
 inoremap <expr> ,dd  strftime('%Y-%m-%d')
 inoremap <expr> ,dt  strftime('%H:%M:%S')
+" カーソル下のキーワードをヘルプ表示
+nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><Enter>
 
 function! s:MakeDirIfNotExist(directory)
 	if !isdirectory(expand(a:directory))
