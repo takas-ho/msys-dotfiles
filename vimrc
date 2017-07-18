@@ -55,9 +55,6 @@ augroup cursorline
 	autocmd WinEnter * setlocal cursorline
 	autocmd WinLeave * setlocal nocursorline
 augroup END
-:hi clear CursorLine
-:hi CursorLine gui=underline
-highlight CursorLine ctermbg=blue guibg=black
 " markdown
 hi link htmlItalic LineNr
 hi link htmlBold WarningMsg
