@@ -29,7 +29,7 @@ if !has('vim_starting')
 endif
 
 " コードの色分け
-syntax on
+syntax enable
 
 colorscheme desert
 
