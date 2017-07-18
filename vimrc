@@ -1,32 +1,23 @@
 if has('vim_starting')
 	set nocompatible
-	set runtimepath+=~/.vim/bundle/neobundle.vim
+	set runtimepath+=~/.vim/plugged/vim-plug
 endif
 
-call neobundle#begin(expand('~/.vim/bundle'))
+call plug#begin('~/.vim/plugged')
 
-" neobundle.vim 自身をneobundle.vimで管理する
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'rcmdnk/vim-markdown'
-NeoBundle 'rhysd/vim-gfm-syntax'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'glidenote/memolist.vim'
-NeoBundle 'tpope/vim-fugitive'
+Plug 'Shougo/neocomplete.vim'
+Plug 'rcmdnk/vim-markdown'
+Plug 'rhysd/vim-gfm-syntax'
+Plug 'Shougo/unite.vim'
+Plug 'glidenote/memolist.vim'
+Plug 'tpope/vim-fugitive'
 
 " color
-NeoBundle 'tomasr/molokai'
+Plug 'tomasr/molokai'
 
-call neobundle#end()
+call plug#end()
 
 filetype plugin indent on
-" プラグインがインストールされているかチェック
-NeoBundleCheck
-
-if !has('vim_starting')
-	" .vimrcを読み込み直したときのための設定
-	call neobundle#call_hook('on_source')
-endif
 
 " コードの色分け
 syntax enable
