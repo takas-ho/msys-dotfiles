@@ -88,6 +88,11 @@ set wrapscan
 set hlsearch
 " ESC連打でハイライト解除
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
+" 上下移動「論理行」「表示行」を入れ替え
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
 
 function! s:MakeDirIfNotExist(directory)
 	if !isdirectory(expand(a:directory))
