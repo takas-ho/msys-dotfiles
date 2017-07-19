@@ -42,6 +42,8 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,sjis
 
+set shell=bash		" デフォルトのままだとcmd.exe
+
 " 見た目
 " 行番号表示
 set number
