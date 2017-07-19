@@ -26,8 +26,12 @@ let s:is_windows = has('win16') || has('win32') || has('win64')
 let s:is_cygwin  = has('win32unix')
 let s:is_cui     = !has('gui_running')
 
-"colorscheme industry
-colorscheme pablo
+if &t_Co < 256
+	"colorscheme industry
+	colorscheme pablo
+else
+	colorscheme molokai
+endif
 
 set tabstop=4
 set softtabstop=4
