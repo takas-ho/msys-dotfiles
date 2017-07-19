@@ -22,6 +22,10 @@ filetype plugin indent on
 " コードの色分け
 syntax enable
 
+let s:is_windows = has('win16') || has('win32') || has('win64')
+let s:is_cygwin  = has('win32unix')
+let s:is_cui     = !has('gui_running')
+
 "colorscheme industry
 colorscheme pablo
 
@@ -29,8 +33,12 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
+if &term == 'win32'
+	set termencoding=cp932
+else
+	set termencoding=utf-8
+endif
 set encoding=utf-8
-set termencoding=cp932
 set fileencoding=utf-8
 set fileencodings=utf-8,sjis
 
