@@ -11,6 +11,7 @@ Plug 'rhysd/vim-gfm-syntax', { 'for': ['markdown']}
 Plug 'Shougo/unite.vim'
 Plug 'glidenote/memolist.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " color
 Plug 'tomasr/molokai'
@@ -167,6 +168,4 @@ nnoremap <Leader>ml  :<C-u>MemoList<CR>
 nnoremap <Leader>mg  :<C-u>MemoGrep<CR>
 let g:memolist_memo_suffix = "md"
 let g:memolist_qfixgrep = 1
-let g:memolist_unite = 1
-let g:memolist_unite_source = "file_rec"
-let g:memolist_unite_option = "-auto-preview -start-insert"
+let g:memolist_ex_cmd = 'NERDTree'
