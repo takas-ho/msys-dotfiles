@@ -6,6 +6,8 @@ endif
 silent! call plug#begin('~/.vim/plugged')
 
 Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'rcmdnk/vim-markdown', { 'for': ['markdown']}
 Plug 'rhysd/vim-gfm-syntax', { 'for': ['markdown']}
 Plug 'glidenote/memolist.vim'
