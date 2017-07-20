@@ -3,7 +3,7 @@ if has('vim_starting')
 	set runtimepath+=~/.vim/plugged/vim-plug
 endif
 
-call plug#begin('~/.vim/plugged')
+silent! call plug#begin('~/.vim/plugged')
 
 Plug 'Shougo/neocomplete.vim'
 Plug 'rcmdnk/vim-markdown', { 'for': ['markdown']}
@@ -12,6 +12,11 @@ Plug 'Shougo/unite.vim'
 Plug 'glidenote/memolist.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+
+if 16 <= &t_Co
+	Plug 'bling/vim-airline'
+	let g:airline#extensions#tabline#enabled = 1
+endif
 
 " color
 Plug 'tomasr/molokai'
