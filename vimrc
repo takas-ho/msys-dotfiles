@@ -174,7 +174,7 @@ set statusline+=[LOW=%l/%L]
 
 let mapleader = "\<Space>"
 
-nnoremap <Leader>ev	:<C-u>tabnew $MYVIMRC<CR>
+nnoremap <Leader>ev  :<C-u>tabnew $MYVIMRC<CR>
 
 " memolist
 nnoremap <Leader>mn  :<C-u>MemoNew<CR>
