@@ -21,6 +21,7 @@ endif
 
 " colorscheme
 Plug 'tomasr/molokai'
+Plug 'keith/parsec.vim'
 
 call plug#end()
 
