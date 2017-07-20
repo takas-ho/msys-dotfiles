@@ -19,7 +19,7 @@ if 16 <= &t_Co
 	let g:airline#extensions#tabline#enabled = 1
 endif
 
-" color
+" colorscheme
 Plug 'tomasr/molokai'
 
 call plug#end()
