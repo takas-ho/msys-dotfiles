@@ -12,9 +12,6 @@ endif
 
 nnoremap <Leader>eg	:<C-u>tabnew $MYGVIMRC<CR>
 
-" 不可視文字を表示の詳細設定
-set listchars=tab:\▸\ ,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-
 "" clipboardを使いたい
 "set clipboard=unnamed
 
