@@ -12,7 +12,7 @@ Plug 'rcmdnk/vim-markdown', { 'for': ['markdown']}
 Plug 'rhysd/vim-gfm-syntax', { 'for': ['markdown']}
 Plug 'glidenote/memolist.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
 
 if 16 <= &t_Co
 	Plug 'bling/vim-airline'
