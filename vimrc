@@ -134,7 +134,12 @@ function! s:MakeDirIfNotExist(directory)
 	endif
 endfunction
 
-" swap file
+set swapfile
+" スワップ作成済みなら読み取り専用で開く
+augroup swapchoice-readonly
+	autocmd!
+	autocmd SwapExists * let v:swapchoice = 'o'
+augroup END
 set directory=$HOME/.tmp/vim/swap
 call s:MakeDirIfNotExist(&directory)
 
