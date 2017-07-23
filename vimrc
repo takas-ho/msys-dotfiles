@@ -29,6 +29,8 @@ filetype plugin indent on
 
 " 構文ハイライト表示
 syntax enable
+" 行番号表示
+set number
 
 let s:is_windows = has('win16') || has('win32') || has('win64')
 let s:is_cygwin  = has('win32unix')
@@ -60,8 +62,6 @@ set fileencodings=utf-8,sjis
 set shell=bash		" デフォルトのままだとcmd.exe
 
 " 見た目
-" 行番号表示
-set number
 "" 現在の行を強調表示
 set cursorline
 "" 現在の列を強調表示
