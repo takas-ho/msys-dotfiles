@@ -46,6 +46,14 @@ else
 	colorscheme molokai
 endif
 
+set cursorline				" 現在の行を強調表示
+" カレントウィンドウにのみ罫線を引く
+augroup cursorline
+	autocmd!
+	autocmd WinEnter * setlocal cursorline
+	autocmd WinLeave * setlocal nocursorline
+augroup END
+
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -62,16 +70,9 @@ set fileencodings=utf-8,sjis
 set shell=bash		" デフォルトのままだとcmd.exe
 
 " 見た目
-"" 現在の行を強調表示
-set cursorline
 "" 現在の列を強調表示
 "set cursorcolumn
-" カレントウィンドウにのみ罫線を引く
-augroup cursorline
-	autocmd!
-	autocmd WinEnter * setlocal cursorline
-	autocmd WinLeave * setlocal nocursorline
-augroup END
+
 " markdown
 hi link htmlItalic LineNr
 hi link htmlBold WarningMsg
