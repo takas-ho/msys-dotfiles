@@ -127,6 +127,7 @@ nnoremap gc `[v`]
 vnoremap gc :<C-u>normal gc<Enter>
 onoremap gc :<C-u>normal gc<Enter>
 
+" make dir
 function! s:MakeDirIfNotExist(directory)
 	if !isdirectory(expand(a:directory))
 		call mkdir(expand(a:directory), 'p')
