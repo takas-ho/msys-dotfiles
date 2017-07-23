@@ -134,6 +134,10 @@ function! s:MakeDirIfNotExist(directory)
 	endif
 endfunction
 
+" swap file
+set directory=$HOME/.tmp/vim/swap
+call s:MakeDirIfNotExist(&directory)
+
 "File
 set hidden      "ファイル変更中でも他のファイルを開けるようにする
 set autoread    "ファイル内容が変更されると自動読み込みする
@@ -150,10 +154,6 @@ if has('persistent_undo')
 	set undodir=$HOME/.tmp/vim/undo
 	call s:MakeDirIfNotExist(&undodir)
 endif
-
-" swap file
-set directory=$HOME/.tmp/vim/swap
-call s:MakeDirIfNotExist(&directory)
 
 " ファイル名
 set statusline=%F
