@@ -27,7 +27,7 @@ call plug#end()
 
 filetype plugin indent on
 
-" コードの色分け
+" 構文ハイライト表示
 syntax enable
 
 let s:is_windows = has('win16') || has('win32') || has('win64')
