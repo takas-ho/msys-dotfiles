@@ -54,6 +54,8 @@ augroup cursorline
 	autocmd WinLeave * setlocal nocursorline
 augroup END
 
+set backspace=start,eol,indent		" Backspaceで文字の削除とeol,indentも削除可能に
+
 " タブ幅
 set tabstop=4
 set softtabstop=4
