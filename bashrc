@@ -8,4 +8,7 @@ if [ -f ~/bin/ssh-homma@daniel-soft ]; then
 fi
 alias gvimnew=$HOME/bin/gvim
 alias gvim="gvimnew --remote-tab-silent"
-export GIT_MERGE_AUTOEDIT=no
+if [ `which bash` = "/usr/bin/bash" ]; then
+	# git2.xだと、git mergeでeditorが動くので抑止する
+	export GIT_MERGE_AUTOEDIT=no
+fi
