@@ -3,29 +3,42 @@ if has('vim_starting')
 	set runtimepath+=~/.vim/plugged/vim-plug
 endif
 
-call plug#begin('~/.vim/plugged')
+silent! call plug#begin('~/.vim/plugged')
 
 Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'rcmdnk/vim-markdown', { 'for': ['markdown']}
 Plug 'rhysd/vim-gfm-syntax', { 'for': ['markdown']}
-Plug 'Shougo/unite.vim'
 Plug 'glidenote/memolist.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
 
-" color
+if 16 <= &t_Co
+	Plug 'bling/vim-airline'
+	let g:airline#extensions#tabline#enabled = 1
+endif
+
+" colorscheme
 Plug 'tomasr/molokai'
+Plug 'keith/parsec.vim'
 
 call plug#end()
 
 filetype plugin indent on
 
-" コードの色分け
+" 構文ハイライト表示
 syntax enable
+" 行番号表示
+set number
 
 let s:is_windows = has('win16') || has('win32') || has('win64')
 let s:is_cygwin  = has('win32unix')
 let s:is_cui     = !has('gui_running')
 
+if s:is_cygwin && &term =~# '^xterm' && &t_Co < 256
+	set t_Co=256
+endif
 if &t_Co < 256
 	"colorscheme industry
 	colorscheme pablo
@@ -33,6 +46,20 @@ else
 	colorscheme molokai
 endif
 
+set cursorline				" 現在の行を強調表示
+" カレントウィンドウにのみ罫線を引く
+augroup cursorline
+	autocmd!
+	autocmd WinEnter * setlocal cursorline
+	autocmd WinLeave * setlocal nocursorline
+augroup END
+
+set backspace=start,eol,indent		" Backspaceで文字の削除とeol,indentも削除可能に
+set whichwrap=b,s,[,],<,>,~			" カーソルキーでeolをまたげるように
+set mouse=							" ターミナルごとに動作が異なるらしいマウス連動はしない
+set laststatus=2					" ステータス行を常に表示
+
+" タブ幅
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -49,18 +76,9 @@ set fileencodings=utf-8,sjis
 set shell=bash		" デフォルトのままだとcmd.exe
 
 " 見た目
-" 行番号表示
-set number
-"" 現在の行を強調表示
-set cursorline
 "" 現在の列を強調表示
 "set cursorcolumn
-" カレントウィンドウにのみ罫線を引く
-augroup cursorline
-	autocmd!
-	autocmd WinEnter * setlocal cursorline
-	autocmd WinLeave * setlocal nocursorline
-augroup END
+
 " markdown
 hi link htmlItalic LineNr
 hi link htmlBold WarningMsg
@@ -78,7 +96,11 @@ set wildmode=list:longest
 
 " Tab
 " 不可視文字を可視化
-set list listchars=tab:>-,trail:･,precedes:<,extends:>
+if &term == 'win32'
+	set list listchars=tab:>-,trail:･,precedes:<,extends:>
+else
+	set list listchars=tab:\▸\ ,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+endif
 
 " 検索系
 " 検索文字列が小文字の場合は大文字小文字を区別なく検索する
@@ -111,11 +133,21 @@ nnoremap gc `[v`]
 vnoremap gc :<C-u>normal gc<Enter>
 onoremap gc :<C-u>normal gc<Enter>
 
+" make dir
 function! s:MakeDirIfNotExist(directory)
 	if !isdirectory(expand(a:directory))
-		call mkdir(expand(a:directory), 'p')
+		call mkdir(expand(a:directory),"p")
 	endif
 endfunction
+
+set swapfile
+" スワップ作成済みなら読み取り専用で開く
+augroup swapchoice-readonly
+	autocmd!
+	autocmd SwapExists * let v:swapchoice = 'o'
+augroup END
+set directory=$HOME/.tmp/vim/swap
+call s:MakeDirIfNotExist(&directory)
 
 "File
 set hidden      "ファイル変更中でも他のファイルを開けるようにする
@@ -133,10 +165,6 @@ if has('persistent_undo')
 	set undodir=$HOME/.tmp/vim/undo
 	call s:MakeDirIfNotExist(&undodir)
 endif
-
-" swap file
-set directory=$HOME/.tmp/vim/swap
-call s:MakeDirIfNotExist(&directory)
 
 " ファイル名
 set statusline=%F
@@ -159,7 +187,8 @@ set statusline+=[LOW=%l/%L]
 
 let mapleader = "\<Space>"
 
-nnoremap <Leader>ev	:<C-u>tabnew $MYVIMRC<CR>
+nnoremap <Leader>ev  :<C-u>tabnew $MYVIMRC<CR>
+nnoremap <Leader>ee  :<C-u>NERDTreeToggle<CR>
 
 " memolist
 nnoremap <Leader>mn  :<C-u>MemoNew<CR>
@@ -167,6 +196,4 @@ nnoremap <Leader>ml  :<C-u>MemoList<CR>
 nnoremap <Leader>mg  :<C-u>MemoGrep<CR>
 let g:memolist_memo_suffix = "md"
 let g:memolist_qfixgrep = 1
-let g:memolist_unite = 1
-let g:memolist_unite_source = "file_rec"
-let g:memolist_unite_option = "-auto-preview -start-insert"
+let g:memolist_ex_cmd = 'NERDTree'
