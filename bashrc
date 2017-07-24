@@ -8,3 +8,4 @@ if [ -f ~/bin/ssh-homma@daniel-soft ]; then
 fi
 alias gvimnew=$HOME/bin/gvim
 alias gvim="gvimnew --remote-tab-silent"
+export GIT_MERGE_AUTOEDIT=no
