@@ -5,7 +5,8 @@ endif
 
 let s:is_windows = has('win16') || has('win32') || has('win64')
 let s:is_cygwin  = has('win32unix')
-let s:is_cui     = !has('gui_running')
+let s:is_gui     = has('gui_running')
+let s:is_cui     = !s:is_gui
 
 if s:is_cygwin && &term =~# '^xterm' && &t_Co < 256
 	set t_Co=256
@@ -22,7 +23,7 @@ Plug 'glidenote/memolist.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
 
-if 16 <= &t_Co
+if 16 <= &t_Co || s:is_gui
 	Plug 'bling/vim-airline'
 	let g:airline#extensions#tabline#enabled = 1
 endif
