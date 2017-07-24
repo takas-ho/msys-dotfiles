@@ -3,6 +3,14 @@ if has('vim_starting')
 	set runtimepath+=~/.vim/plugged/vim-plug
 endif
 
+let s:is_windows = has('win16') || has('win32') || has('win64')
+let s:is_cygwin  = has('win32unix')
+let s:is_cui     = !has('gui_running')
+
+if s:is_cygwin && &term =~# '^xterm' && &t_Co < 256
+	set t_Co=256
+endif
+
 silent! call plug#begin('~/.vim/plugged')
 
 Plug 'Shougo/neocomplete.vim'
@@ -32,13 +40,6 @@ syntax enable
 " 行番号表示
 set number
 
-let s:is_windows = has('win16') || has('win32') || has('win64')
-let s:is_cygwin  = has('win32unix')
-let s:is_cui     = !has('gui_running')
-
-if s:is_cygwin && &term =~# '^xterm' && &t_Co < 256
-	set t_Co=256
-endif
 if &t_Co < 256
 	"colorscheme industry
 	colorscheme pablo
