@@ -5,6 +5,8 @@ endif
 
 let s:is_windows = has('win16') || has('win32') || has('win64')
 let s:is_cygwin  = has('win32unix')
+let s:is_mac     = has('mac')
+let s:is_linux   = has('linux')
 let s:is_gui     = has('gui_running')
 let s:is_cui     = !s:is_gui
 
