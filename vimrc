@@ -198,6 +198,7 @@ nnoremap <Leader>ev  :<C-u>tabnew $MYVIMRC<CR>
 nnoremap <Leader>ee  :<C-u>NERDTreeToggle<CR>
 
 nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>w :w<CR>
 " clipboard経由をお手軽にする
 vnoremap <Leader>y "+y
 vnoremap <Leader>d "+d
