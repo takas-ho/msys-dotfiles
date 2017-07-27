@@ -3,6 +3,17 @@ if has('vim_starting')
 	set runtimepath+=~/.vim/plugged/vim-plug
 endif
 
+let s:is_windows = has('win16') || has('win32') || has('win64')
+let s:is_cygwin  = has('win32unix')
+let s:is_mac     = has('mac')
+let s:is_linux   = has('linux')
+let s:is_gui     = has('gui_running')
+let s:is_cui     = !s:is_gui
+
+if s:is_cygwin && &term =~# '^xterm' && &t_Co < 256
+	set t_Co=256
+endif
+
 silent! call plug#begin('~/.vim/plugged')
 
 Plug 'Shougo/neocomplete.vim'
@@ -13,8 +24,11 @@ Plug 'rhysd/vim-gfm-syntax', { 'for': ['markdown']}
 Plug 'glidenote/memolist.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
+Plug 'ctrlpvim/ctrlp.vim'
 
-if 16 <= &t_Co
+if s:is_gui
+	Plug 'bling/vim-airline'
+elseif 16 <= &t_Co
 	Plug 'bling/vim-airline'
 	let g:airline#extensions#tabline#enabled = 1
 endif
@@ -32,13 +46,6 @@ syntax enable
 " 行番号表示
 set number
 
-let s:is_windows = has('win16') || has('win32') || has('win64')
-let s:is_cygwin  = has('win32unix')
-let s:is_cui     = !has('gui_running')
-
-if s:is_cygwin && &term =~# '^xterm' && &t_Co < 256
-	set t_Co=256
-endif
 if &t_Co < 256
 	"colorscheme industry
 	colorscheme pablo
@@ -189,6 +196,16 @@ let mapleader = "\<Space>"
 
 nnoremap <Leader>ev  :<C-u>tabnew $MYVIMRC<CR>
 nnoremap <Leader>ee  :<C-u>NERDTreeToggle<CR>
+
+nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>w :w<CR>
+" clipboard経由をお手軽にする
+vnoremap <Leader>y "+y
+vnoremap <Leader>d "+d
+nnoremap <Leader>p "+p
+nnoremap <Leader>P "+P
+vnoremap <Leader>p "+p
+vnoremap <Leader>P "+P
 
 " memolist
 nnoremap <Leader>mn  :<C-u>MemoNew<CR>

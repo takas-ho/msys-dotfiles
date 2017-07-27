@@ -4,10 +4,11 @@ colorscheme  desert
 set background=dark
 
 if has('kaoriya')
+	set showtabline=2	" タブを常に表示
 	autocmd GUIEnter * set transparency=240
 	set guifont=MS_GOTHIC:h9
 	set noundofile
-	colorscheme molokai
+	colorscheme parsec
 endif
 
 nnoremap <Leader>eg	:<C-u>tabnew $MYGVIMRC<CR>
