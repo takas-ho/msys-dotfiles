@@ -24,6 +24,7 @@ Plug 'rhysd/vim-gfm-syntax', { 'for': ['markdown']}
 Plug 'glidenote/memolist.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
+Plug 'ctrlpvim/ctrlp.vim'
 
 if s:is_gui
 	Plug 'bling/vim-airline'
@@ -196,6 +197,7 @@ let mapleader = "\<Space>"
 nnoremap <Leader>ev  :<C-u>tabnew $MYVIMRC<CR>
 nnoremap <Leader>ee  :<C-u>NERDTreeToggle<CR>
 
+nnoremap <Leader>o :CtrlP<CR>
 " clipboard経由をお手軽にする
 vnoremap <Leader>y "+y
 vnoremap <Leader>d "+d
