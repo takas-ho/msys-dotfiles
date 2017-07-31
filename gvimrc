@@ -1,4 +1,4 @@
-set columns=128
+set columns=144
 set lines=60
 colorscheme  desert
 set background=dark
