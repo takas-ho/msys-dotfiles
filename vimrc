@@ -100,6 +100,7 @@ set showmatch
 set laststatus=2
 " コマンドラインの補完
 set wildmode=list:longest
+set foldlevel=100		" 折り畳みしたくないから100
 
 " Tab
 " 不可視文字を可視化
