@@ -78,7 +78,7 @@ else
 endif
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8,sjis
+set fileencodings=cp932,utf-8
 
 set shell=bash		" デフォルトのままだとcmd.exe
 
