@@ -12,6 +12,7 @@ if has('kaoriya')
 endif
 
 nnoremap <Leader>eg	:<C-u>tabnew $MYGVIMRC<CR>
+nnoremap <Leader>rg	:<C-u>source $MYGVIMRC<CR>
 
 "" clipboardを使いたい
 "set clipboard=unnamed
