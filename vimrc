@@ -62,7 +62,7 @@ augroup cursorline
 augroup END
 
 set backspace=start,eol,indent		" Backspaceで文字の削除とeol,indentも削除可能に
-set whichwrap=b,s,[,],<,>,~			" カーソルキーでeolをまたげるように
+set whichwrap=b,s,h,l,[,],<,>,~			" カーソルキーでeolをまたげるように
 set mouse=							" ターミナルごとに動作が異なるらしいマウス連動はしない
 set laststatus=2					" ステータス行を常に表示
 
@@ -78,7 +78,7 @@ else
 endif
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8,sjis
+set fileencodings=cp932,utf-8
 
 set shell=bash		" デフォルトのままだとcmd.exe
 
@@ -100,6 +100,7 @@ set showmatch
 set laststatus=2
 " コマンドラインの補完
 set wildmode=list:longest
+set foldlevel=100		" 折り畳みしたくないから100
 
 " Tab
 " 不可視文字を可視化
@@ -195,6 +196,7 @@ set statusline+=[LOW=%l/%L]
 let mapleader = "\<Space>"
 
 nnoremap <Leader>ev  :<C-u>tabnew $MYVIMRC<CR>
+nnoremap <Leader>rv  :<C-u>source $MYVIMRC<CR>
 nnoremap <Leader>ee  :<C-u>NERDTreeToggle<CR>
 
 nnoremap <Leader>o :CtrlP<CR>

@@ -1,4 +1,4 @@
-set columns=128
+set columns=144
 set lines=60
 colorscheme  desert
 set background=dark
@@ -12,6 +12,7 @@ if has('kaoriya')
 endif
 
 nnoremap <Leader>eg	:<C-u>tabnew $MYGVIMRC<CR>
+nnoremap <Leader>rg	:<C-u>source $MYGVIMRC<CR>
 
 "" clipboardを使いたい
 "set clipboard=unnamed
