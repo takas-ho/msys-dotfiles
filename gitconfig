@@ -24,7 +24,7 @@
 	pr = !sh -c 'GITHUB_TOKEN=9ab9ecae00148e83020d89fcb14e2afab547d248 GITHUB_HOST=auto3tsv132 BROWSER=/c/PROGRA~1/MOZILL~1/firefox.exe hub browse -- compare/$(git symbolic-ref --short HEAD)"?expand=1#start-of-content"'
 	tp = !git tag -l | xargs git tag -d && git fetch -t
 [push]
-	default = upstream
+	default = simple
 [fetch]
 	prune = true
 [diff "sjis"]
