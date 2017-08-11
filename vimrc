@@ -30,7 +30,7 @@ if s:is_gui
 	Plug 'bling/vim-airline'
 elseif 16 <= &t_Co
 	Plug 'bling/vim-airline'
-	let g:airline#extensions#tabline#enabled = 1
+	set showtabline=2	" タブを常に表示
 endif
 
 " colorscheme
@@ -201,13 +201,9 @@ nnoremap <Leader>ee  :<C-u>NERDTreeToggle<CR>
 
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
-" clipboard経由をお手軽にする
-vnoremap <Leader>y "+y
-vnoremap <Leader>d "+d
-nnoremap <Leader>p "+p
-nnoremap <Leader>P "+P
-vnoremap <Leader>p "+p
-vnoremap <Leader>P "+P
+nmap     ,U          :set encoding=utf-8<CR>
+nmap     ,E          :set encoding=euc-jp<CR>
+nmap     ,S          :set encoding=cp932<CR>
 
 " memolist
 nnoremap <Leader>mn  :<C-u>MemoNew<CR>
