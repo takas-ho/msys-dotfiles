@@ -198,6 +198,17 @@ let mapleader = "\<Space>"
 " Find merge conflict markers
 nnoremap <leader>fc  /\v^[<\|=>]{7}( .*\|$)<CR>
 
+" Navigation for tabs
+nnoremap th  :tabfirst<CR>
+nnoremap tj  :tabprev<CR>
+nnoremap tk  :tabnext<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tm  :tabm<Space>
+nnoremap tn  :tabnew<CR>
+nnoremap td  :tabclose<CR>
+
+nnoremap tt  :tabnext<CR>
+
 nnoremap <Leader>ev  :<C-u>tabnew $MYVIMRC<CR>
 nnoremap <Leader>rv  :<C-u>source $MYVIMRC<CR>
 nnoremap <Leader>ee  :<C-u>NERDTreeToggle<CR>
