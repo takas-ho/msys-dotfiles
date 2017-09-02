@@ -195,6 +195,9 @@ set statusline+=[LOW=%l/%L]
 
 let mapleader = "\<Space>"
 
+" Find merge conflict markers
+nnoremap <leader>fc  /\v^[<\|=>]{7}( .*\|$)<CR>
+
 nnoremap <Leader>ev  :<C-u>tabnew $MYVIMRC<CR>
 nnoremap <Leader>rv  :<C-u>source $MYVIMRC<CR>
 nnoremap <Leader>ee  :<C-u>NERDTreeToggle<CR>
