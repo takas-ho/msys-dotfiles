@@ -210,7 +210,7 @@ nnoremap td  :tabclose<CR>
 nnoremap tt  :tabnext<CR>
 
 nnoremap <Leader>ev  :<C-u>tabnew $MYVIMRC<CR>
-nnoremap <Leader>rv  :<C-u>source $MYVIMRC<CR>
+nnoremap <Leader>sv  :<C-u>source $MYVIMRC<CR>
 nnoremap <Leader>ee  :<C-u>NERDTreeToggle<CR>
 
 nnoremap <Leader>o :CtrlP<CR>
