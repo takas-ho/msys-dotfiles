@@ -174,6 +174,10 @@ if has('persistent_undo')
 	call s:MakeDirIfNotExist(&undodir)
 endif
 
+" 標準だとコマンド履歴のフィルタリングまではしないからするように
+cnoremap <C-p>       <Up>
+cnoremap <C-n>       <Down>
+
 " ファイル名
 set statusline=%F
 " 変更チェック
