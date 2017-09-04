@@ -221,8 +221,8 @@ nnoremap <Leader>ev  :<C-u>tabnew $MYVIMRC<CR>
 nnoremap <Leader>sv  :<C-u>source $MYVIMRC<CR>
 nnoremap <Leader>ee  :<C-u>NERDTreeToggle<CR>
 
-nnoremap <Leader>o :CtrlP<CR>
-nnoremap <Leader>w :w<CR>
+nnoremap <Leader>o   :CtrlP<CR>
+nnoremap <Leader>w   :w<CR>
 nmap     ,U          :set encoding=utf-8<CR>
 nmap     ,E          :set encoding=euc-jp<CR>
 nmap     ,S          :set encoding=cp932<CR>
