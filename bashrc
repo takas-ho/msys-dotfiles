@@ -11,4 +11,6 @@ alias gvim="gvimnew --remote-tab-silent"
 if [ `which bash` = "/usr/bin/bash" ]; then
 	# git2.xだと、git mergeでeditorが動くので抑止する
 	export GIT_MERGE_AUTOEDIT=no
+	# unstage状態を`*`表示
+	export GIT_PS1_SHOWDIRTYSTATE=true
 fi
