@@ -97,12 +97,14 @@ endif
 hi link htmlItalic LineNr
 hi link htmlBold WarningMsg
 hi link htmlBoldItalic ErrorMsg
-" インデントはスマートインデント
-set smartindent
-" ビープ音を可視化
-set visualbell
-" 対応する括弧表示
-set showmatch
+
+set smartindent							" インデントはスマートインデント
+set visualbell							" ビープ音を可視化
+set showmatch							" 対応する括弧表示
+set matchtime=1							" 対応カッコ強調表示時間
+source $VIMRUNTIME/macros/matchit.vim	" Vimの「%」を拡張する
+set display=lastline					" 長い行でも表示しきる
+
 " ステータスラインを常に表示
 set laststatus=2
 " コマンドラインの補完
