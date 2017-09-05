@@ -47,11 +47,15 @@ syntax enable
 " 行番号表示
 set number
 
-if &t_Co < 256
-	"colorscheme industry
-	colorscheme pablo
+if s:is_windows || s:is_cygwin
+	if &t_Co < 256
+		"colorscheme industry
+		colorscheme pablo
+	else
+		colorscheme molokai
+	endif
 else
-	colorscheme molokai
+	colorscheme industry
 endif
 
 set cursorline				" 現在の行を強調表示
