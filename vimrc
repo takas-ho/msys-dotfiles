@@ -85,7 +85,9 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=cp932,utf-8
 
-set shell=bash		" デフォルトのままだとcmd.exe
+if s:is_cygwin
+	set shell=bash		" デフォルトのままだとcmd.exe
+endif
 
 " 見た目
 "" 現在の列を強調表示
