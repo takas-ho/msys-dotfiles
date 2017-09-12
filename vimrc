@@ -8,7 +8,6 @@ let s:is_cygwin  = has('win32unix')
 let s:is_gui     = has('gui_running')
 let s:is_unix    = has('unix')
 let s:is_mac     = has('mac')
-let s:is_gui     = has('gui_running')
 let s:is_cui     = !s:is_gui
 
 if (s:is_unix || s:is_cygwin) && &term =~# '^xterm' && &t_Co < 256
