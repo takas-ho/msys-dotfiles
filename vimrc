@@ -5,12 +5,12 @@ endif
 
 let s:is_windows = has('win16') || has('win32') || has('win64')
 let s:is_cygwin  = has('win32unix')
-let s:is_mac     = has('mac')
-let s:is_linux   = has('linux')
 let s:is_gui     = has('gui_running')
+let s:is_unix    = has('unix')
+let s:is_mac     = has('mac')
 let s:is_cui     = !s:is_gui
 
-if s:is_cygwin && &term =~# '^xterm' && &t_Co < 256
+if (s:is_unix || s:is_cygwin) && &term =~# '^xterm' && &t_Co < 256
 	set t_Co=256
 endif
 
@@ -46,11 +46,15 @@ syntax enable
 " 行番号表示
 set number
 
-if &t_Co < 256
-	"colorscheme industry
-	colorscheme pablo
+if s:is_windows || s:is_cygwin
+	if &t_Co < 256
+		"colorscheme industry
+		colorscheme pablo
+	else
+		colorscheme molokai
+	endif
 else
-	colorscheme molokai
+	colorscheme industry
 endif
 
 set cursorline				" 現在の行を強調表示
@@ -65,6 +69,7 @@ set backspace=start,eol,indent		" Backspaceで文字の削除とeol,indentも削
 set whichwrap=b,s,h,l,[,],<,>,~			" カーソルキーでeolをまたげるように
 set mouse=							" ターミナルごとに動作が異なるらしいマウス連動はしない
 set laststatus=2					" ステータス行を常に表示
+set scrolloff=5						" カーソルの上端または下端に最低5行は表示
 
 " タブ幅
 set tabstop=4
@@ -78,9 +83,11 @@ else
 endif
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=cp932,utf-8
+set fileencodings=utf-8,cp932
 
-set shell=bash		" デフォルトのままだとcmd.exe
+if s:is_cygwin
+	set shell=bash		" デフォルトのままだとcmd.exe
+endif
 
 " 見た目
 "" 現在の列を強調表示
@@ -90,12 +97,14 @@ set shell=bash		" デフォルトのままだとcmd.exe
 hi link htmlItalic LineNr
 hi link htmlBold WarningMsg
 hi link htmlBoldItalic ErrorMsg
-" インデントはスマートインデント
-set smartindent
-" ビープ音を可視化
-set visualbell
-" 対応する括弧表示
-set showmatch
+
+set smartindent							" インデントはスマートインデント
+set visualbell							" ビープ音を可視化
+set showmatch							" 対応する括弧表示
+set matchtime=1							" 対応カッコ強調表示時間
+source $VIMRUNTIME/macros/matchit.vim	" Vimの「%」を拡張する
+set display=lastline					" 長い行でも表示しきる
+
 " ステータスラインを常に表示
 set laststatus=2
 " コマンドラインの補完
@@ -121,8 +130,8 @@ set incsearch
 set wrapscan
 " 検索語をハイライト表示
 set hlsearch
-" ESC連打でハイライト解除
-nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
+
+nnoremap <Esc><Esc> :nohlsearch<CR><Esc>	" ESC連打でハイライト解除
 " 上下移動「論理行」「表示行」を入れ替え
 noremap j gj
 noremap k gk
@@ -160,6 +169,7 @@ call s:MakeDirIfNotExist(&directory)
 "File
 set hidden      "ファイル変更中でも他のファイルを開けるようにする
 set autoread    "ファイル内容が変更されると自動読み込みする
+set nofixeol	" ファイル末尾に改行が追加されるのを抑止
 
 "	backup
 set backup
@@ -173,6 +183,10 @@ if has('persistent_undo')
 	set undodir=$HOME/.tmp/vim/undo
 	call s:MakeDirIfNotExist(&undodir)
 endif
+
+" 標準だとコマンド履歴のフィルタリングまではしないからするように
+cnoremap <C-p>       <Up>
+cnoremap <C-n>       <Down>
 
 " ファイル名
 set statusline=%F
@@ -195,12 +209,29 @@ set statusline+=[LOW=%l/%L]
 
 let mapleader = "\<Space>"
 
+" Find merge conflict markers
+nnoremap <leader>fc  /\v^[<\|=>]{7}( .*\|$)<CR>
+
+cnoremap cd.         lcd %:p:h	" Change Working Directory to that of the current file
+vnoremap .           :normal .<CR>	" Allow using the repeat operator with a visual selection
+
+" Navigation for tabs
+nnoremap th  :tabfirst<CR>
+nnoremap tj  :tabprev<CR>
+nnoremap tk  :tabnext<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tm  :tabm<Space>
+nnoremap tn  :tabnew<CR>
+nnoremap td  :tabclose<CR>
+
+nnoremap tt  :tabnext<CR>
+
 nnoremap <Leader>ev  :<C-u>tabnew $MYVIMRC<CR>
-nnoremap <Leader>rv  :<C-u>source $MYVIMRC<CR>
+nnoremap <Leader>sv  :<C-u>source $MYVIMRC<CR>
 nnoremap <Leader>ee  :<C-u>NERDTreeToggle<CR>
 
-nnoremap <Leader>o :CtrlP<CR>
-nnoremap <Leader>w :w<CR>
+nnoremap <Leader>o   :CtrlP<CR>
+nnoremap <Leader>w   :w<CR>
 nmap     ,U          :set encoding=utf-8<CR>
 nmap     ,E          :set encoding=euc-jp<CR>
 nmap     ,S          :set encoding=cp932<CR>
