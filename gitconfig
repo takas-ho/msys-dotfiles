@@ -13,6 +13,7 @@
 	ci = commit
 	st = status
 	sm = submodule
+	mt = mergetool
 	l = log --graph -n 30 --date=iso --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%Creset'
 	ll = log --graph -n 200 --date=iso --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%Creset'
 	s = status --short --branch
@@ -31,3 +32,7 @@
 	textconv = nkf -w
 [diff "xdoc"]
 	textconv = xdoc2txt -8
+[merge]
+	tool = vimdiff
+[mergetool]
+	keepBackup = false
