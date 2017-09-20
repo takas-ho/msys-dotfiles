@@ -213,7 +213,7 @@ set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 " 現在行数/全行数
 set statusline+=[LOW=%l/%L]
 
-let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 
 " Find merge conflict markers
 nnoremap <leader>fc  /\v^[<\|=>]{7}( .*\|$)<CR>
