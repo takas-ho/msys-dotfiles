@@ -27,6 +27,7 @@ endif
 
 silent! call plug#begin('~/.vim/plugged')
 
+Plug 'vim-jp/vimdoc-ja'
 Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
@@ -186,6 +187,8 @@ if has('persistent_undo')
 	set undodir=$HOME/.tmp/vim/undo
 	call s:MakeDirIfNotExist(&undodir)
 endif
+
+set helplang=ja,en
 
 " 標準だとコマンド履歴のフィルタリングまではしないからするように
 cnoremap <C-p>       <Up>
