@@ -122,6 +122,21 @@ if &term == 'win32'
 else
 	set list listchars=tab:\▸\ ,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 endif
+" 全角スペースの可視化
+if has("syntax")
+	" PODバグ対策
+	syn sync fromstart
+
+	function! ActivateInvisibleIndicator()
+		syntax match InvisibleJISX0208Space "　" display containedin=ALL
+		highlight InvisibleJISX0208Space cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
+	endfunction
+
+	augroup invisible
+		autocmd!
+		autocmd BufNew,BufRead * call ActivateInvisibleIndicator()
+	augroup END
+endif
 
 " 検索系
 " 検索文字列が小文字の場合は大文字小文字を区別なく検索する
