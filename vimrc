@@ -1,3 +1,14 @@
+if &term == 'win32'
+	set termencoding=cp932
+else
+	set termencoding=utf-8
+endif
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,cp932
+
+scriptencoding=utf-8
+
 if has('vim_starting')
 	set nocompatible
 	set runtimepath+=~/.vim/plugged/vim-plug
@@ -16,6 +27,7 @@ endif
 
 silent! call plug#begin('~/.vim/plugged')
 
+Plug 'vim-jp/vimdoc-ja'
 Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
@@ -76,14 +88,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-if &term == 'win32'
-	set termencoding=cp932
-else
-	set termencoding=utf-8
-endif
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8,cp932
 
 if s:is_cygwin
 	set shell=bash		" デフォルトのままだとcmd.exe
@@ -116,7 +120,22 @@ set foldlevel=100		" 折り畳みしたくないから100
 if &term == 'win32'
 	set list listchars=tab:>-,trail:･,precedes:<,extends:>
 else
-	set list listchars=tab:\▸\ ,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+	set list listchars=tab:\▸\ ,trail:_,eol:↲,extends:»,precedes:«,nbsp:%
+endif
+" 全角スペースの可視化
+if has("syntax")
+	" PODバグ対策
+	syn sync fromstart
+
+	function! ActivateInvisibleIndicator()
+		syntax match InvisibleJISX0208Space "　" display containedin=ALL
+		highlight InvisibleJISX0208Space cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
+	endfunction
+
+	augroup invisible
+		autocmd!
+		autocmd BufNew,BufRead * call ActivateInvisibleIndicator()
+	augroup END
 endif
 
 " 検索系
@@ -184,6 +203,8 @@ if has('persistent_undo')
 	call s:MakeDirIfNotExist(&undodir)
 endif
 
+set helplang=ja,en
+
 " 標準だとコマンド履歴のフィルタリングまではしないからするように
 cnoremap <C-p>       <Up>
 cnoremap <C-n>       <Down>
@@ -207,7 +228,7 @@ set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 " 現在行数/全行数
 set statusline+=[LOW=%l/%L]
 
-let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 
 " Find merge conflict markers
 nnoremap <leader>fc  /\v^[<\|=>]{7}( .*\|$)<CR>
