@@ -120,7 +120,7 @@ set foldlevel=100		" 折り畳みしたくないから100
 if &term == 'win32'
 	set list listchars=tab:>-,trail:･,precedes:<,extends:>
 else
-	set list listchars=tab:\▸\ ,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+	set list listchars=tab:\▸\ ,trail:_,eol:↲,extends:»,precedes:«,nbsp:%
 endif
 " 全角スペースの可視化
 if has("syntax")
