@@ -29,8 +29,6 @@ silent! call plug#begin('~/.vim/plugged')
 
 Plug 'vim-jp/vimdoc-ja'
 Plug 'Shougo/neocomplete.vim'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
 Plug 'rcmdnk/vim-markdown', { 'for': ['markdown']}
 Plug 'rhysd/vim-gfm-syntax', { 'for': ['markdown']}
 Plug 'glidenote/memolist.vim'
@@ -44,6 +42,9 @@ elseif 16 <= &t_Co
 	Plug 'bling/vim-airline'
 	set showtabline=2	" タブを常に表示
 endif
+
+" edit
+Plug 'SirVer/ultisnips'
 
 " lang
 Plug 'fatih/vim-go'
