@@ -14,3 +14,8 @@ if [ `which bash` = "/usr/bin/bash" ]; then
 	# unstage状態を`*`表示
 	export GIT_PS1_SHOWDIRTYSTATE=true
 fi
+
+# golang
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
