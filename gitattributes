@@ -16,3 +16,5 @@
 *.cmd diff=sjis
 *.scp diff=sjis
 *.ini diff=sjis
+*.asp diff=sjis
+*.inc diff=sjis
