@@ -46,7 +46,7 @@ endif
 Plug 'scrooloose/syntastic'
 
 " edit
-Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips', { 'for': ['go']}
 
 " lang
 Plug 'fatih/vim-go'
