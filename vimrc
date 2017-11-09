@@ -46,7 +46,9 @@ endif
 Plug 'scrooloose/syntastic'
 
 " edit
-Plug 'SirVer/ultisnips', { 'for': ['go']}
+if !s:is_windows && !s:is_cygwin
+	Plug 'SirVer/ultisnips'
+endif
 
 " lang
 Plug 'fatih/vim-go'
