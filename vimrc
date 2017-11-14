@@ -36,17 +36,22 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
 Plug 'ctrlpvim/ctrlp.vim'
 
+Plug 'easymotion/vim-easymotion'
+let g:EasyMotion_use_migemo = 1
+
 if s:is_gui
 	Plug 'bling/vim-airline'
 elseif 16 <= &t_Co
-	Plug 'bling/vim-airline'
+	Plug 'itchyny/lightline.vim'
 	set showtabline=2	" タブを常に表示
 endif
 
 Plug 'scrooloose/syntastic'
 
 " edit
-Plug 'SirVer/ultisnips', { 'for': ['go']}
+if !s:is_windows && !s:is_cygwin
+	Plug 'SirVer/ultisnips'
+endif
 
 " lang
 Plug 'fatih/vim-go'
@@ -291,6 +296,12 @@ nnoremap td  :tabclose<CR>
 
 nnoremap tt  :tabnext<CR>
 
+" vimgrep結果をcopenせずに開く
+augroup quickfix-open
+	autocmd!
+	autocmd QuickfixCmdPost * copen
+augroup END
+
 nnoremap <Leader>ev  :<C-u>tabnew $MYVIMRC<CR>
 nnoremap <Leader>sv  :<C-u>source $MYVIMRC<CR>
 nnoremap <Leader>ee  :<C-u>NERDTreeToggle<CR>
@@ -308,3 +319,12 @@ nnoremap <Leader>mg  :<C-u>MemoGrep<CR>
 let g:memolist_memo_suffix = "md"
 let g:memolist_qfixgrep = 1
 let g:memolist_ex_cmd = 'NERDTree'
+
+" easymotion
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)	
+
