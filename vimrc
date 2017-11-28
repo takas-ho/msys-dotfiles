@@ -207,6 +207,13 @@ noremap j gj
 noremap k gk
 noremap gj j
 noremap gk k
+" 行頭・行末移動も「論理行」「表示行」を入れ替え
+noremap 0 g0
+noremap g0 0
+noremap ^ g^
+noremap g^ ^
+noremap $ g$
+noremap g$ $
 " 行末までヤンク
 nnoremap Y y$
 " 日時入力の補助
@@ -329,4 +336,7 @@ nmap s <Plug>(easymotion-overwin-f2)
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)	
+" migemo
+map g/ <Plug>(easymotion-sn)
+omap g/ <Plug>(easymotion-tn)
 

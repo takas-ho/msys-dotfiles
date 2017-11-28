@@ -1,4 +1,4 @@
-set columns=144
+set columns=200
 set lines=60
 colorscheme  desert
 set background=dark
@@ -18,7 +18,7 @@ nnoremap <Leader>rg	:<C-u>source $MYGVIMRC<CR>
 "set clipboard=unnamed
 
 " neobundle導入でGVimメニューが化ける
-source $VIMRUNTIME/delmenu.vim
-set langmenu=ja_jp.utf-8
-source $VIMRUNTIME/menu.vim
+"source $VIMRUNTIME/delmenu.vim
+"set langmenu=ja_jp.utf-8
+"source $VIMRUNTIME/menu.vim
 
