@@ -336,4 +336,7 @@ nmap s <Plug>(easymotion-overwin-f2)
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)	
+" migemo
+map g/ <Plug>(easymotion-sn)
+omap g/ <Plug>(easymotion-tn)
 
