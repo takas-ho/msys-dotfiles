@@ -186,8 +186,7 @@ source $VIMRUNTIME/macros/matchit.vim	" Vimの「%」を拡張する
 set display=lastline					" 長い行でも表示しきる
 set foldlevel=99						" 折りたたまれるのを抑止
 
-" コマンドラインの補完
-set wildmode=list:longest
+set wildmode=list:longest				" コマンドラインの補完
 
 " Tab
 " 不可視文字を可視化
