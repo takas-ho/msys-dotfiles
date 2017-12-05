@@ -10,6 +10,7 @@ if has('kaoriya')
 	set noundofile
 	colorscheme parsec
 endif
+highlight CursorLine gui=underline guifg=NONE guibg=NONE
 
 nnoremap <Leader>eg	:<C-u>tabnew $MYGVIMRC<CR>
 nnoremap <Leader>rg	:<C-u>source $MYGVIMRC<CR>
