@@ -5,7 +5,7 @@ else
 endif
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8,cp932
+set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932
 
 scriptencoding=utf-8
 
@@ -112,6 +112,7 @@ augroup cursorline
 	autocmd WinEnter * setlocal cursorline
 	autocmd WinLeave * setlocal nocursorline
 augroup END
+highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
 set backspace=start,eol,indent		" Backspaceで文字の削除とeol,indentも削除可能に
 set whichwrap=b,s,h,l,[,],<,>,~			" カーソルキーでeolをまたげるように
@@ -123,7 +124,7 @@ set scrolloff=5						" カーソルの上端または下端に最低5行は表�
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-augroup myFIleType
+augroup myFileType
 	autocmd!
 	autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
 	autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
@@ -185,10 +186,7 @@ source $VIMRUNTIME/macros/matchit.vim	" Vimの「%」を拡張する
 set display=lastline					" 長い行でも表示しきる
 set foldlevel=99						" 折りたたまれるのを抑止
 
-" ステータスラインを常に表示
-set laststatus=2
-" コマンドラインの補完
-set wildmode=list:longest
+set wildmode=list:longest				" コマンドラインの補完
 
 " Tab
 " 不可視文字を可視化
