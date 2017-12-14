@@ -32,12 +32,29 @@ Plug 'Shougo/neocomplete.vim'
 Plug 'rcmdnk/vim-markdown', { 'for': ['markdown']}
 Plug 'rhysd/vim-gfm-syntax', { 'for': ['markdown']}
 Plug 'glidenote/memolist.vim'
-Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
+Plug 'justinmk/vim-dirvish'
 Plug 'ctrlpvim/ctrlp.vim'
+
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'			" キャッシュディレクトリ
+let g:ctrlp_clear_cache_on_exit = 0						" キャッシュを終了時に削除しない
+let g:ctrlp_lazy_update = 1								" 遅延再描画
+let g:ctrlp_root_markers = ['Gemfile', 'pom.xml', 'build.xml', 'package.json', '.gitignore']	" ルートパスと認識させるためのファイル
+let g:ctrlp_max_height = 20								" CtrlPのウィンドウ最大高さ
+" 無視するディレクトリ
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$|_v\/(bin|obj)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_use_migemo = 1
+
+Plug 'tpope/vim-fugitive' | Plug 'gregsexton/gitv', { 'on': ['Gitv']}
+let g:Gitv_OpenHorizontal = 1
+let g:Gitv_DoNotMapCtrlKey = 1
+let g:Gitv_TruncateCommitSubjects = 1
 
 if s:is_gui
 	Plug 'bling/vim-airline'
@@ -46,7 +63,14 @@ elseif 16 <= &t_Co
 	set showtabline=2	" タブを常に表示
 endif
 
-Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic', { 'tag' : '3.8.0' }
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_markdown_checkers = ['textlint']
+let g:syntastic_text_checkers = ['textlint']
 
 " edit
 if !s:is_windows && !s:is_cygwin
@@ -159,12 +183,12 @@ set showmatch							" 対応する括弧表示
 set matchtime=1							" 対応カッコ強調表示時間
 source $VIMRUNTIME/macros/matchit.vim	" Vimの「%」を拡張する
 set display=lastline					" 長い行でも表示しきる
+set foldlevel=99						" 折りたたまれるのを抑止
 
 " ステータスラインを常に表示
 set laststatus=2
 " コマンドラインの補完
 set wildmode=list:longest
-set foldlevel=100		" 折り畳みしたくないから100
 
 " Tab
 " 不可視文字を可視化
@@ -333,6 +357,7 @@ let g:memolist_ex_cmd = 'NERDTree'
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
 nmap s <Plug>(easymotion-overwin-f2)
+vmap s <Plug>(easymotion-bd-f2)
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)	
