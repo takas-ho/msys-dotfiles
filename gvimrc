@@ -1,8 +1,11 @@
+let s:is_windows = has('win16') || has('win32') || has('win64')
 " display & information
 set lines=60
 set columns=200
-set guioptions=c	" show no GUI components
-set guioptions-=T	" ツールバー非表示
+if !s:is_windows
+	set guioptions=c	" show no GUI components
+	set guioptions-=T	" ツールバー非表示
+endif
 colorscheme  desert
 set background=dark
 
@@ -13,7 +16,9 @@ if has('kaoriya')
 	set noundofile
 	colorscheme parsec
 endif
-set imdisable	" IMを無効化
+if !s:is_windows
+	set imdisable	" IMを無効化
+endif
 highlight CursorLine gui=underline guifg=NONE guibg=NONE
 
 set visualbell t_vb= " ビープ音なし
