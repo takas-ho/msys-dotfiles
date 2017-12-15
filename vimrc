@@ -6,6 +6,16 @@ endif
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932
+if !has('gui_running') && has('win32') && 0<$CONEMUPID
+	set termencoding=utf-8
+	set term=xterm
+	set t_Co=256
+	let &t_AB="\e[48;5;%dm"
+	let &t_AF="\e[38;5;%dm"
+	inoremap <Char-0x07F> <BS>
+	nnoremap <Char-0x07F> <BS>
+	cnoremap <Char-0x07F> <BS>
+endif
 
 scriptencoding=utf-8
 

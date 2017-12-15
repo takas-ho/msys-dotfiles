@@ -2,6 +2,9 @@ alias ll='ls --color=auto --show-control-chars -alF'
 alias ls='ls --color=auto --show-control-chars'
 alias la='ls --color=auto --show-control-chars -A'
 alias l='ls --color=auto --show-control-chars -CF'
+if [ "$CONEMUPID" != "" ]; then
+	/c/windows/system32/chcp.com 65001
+fi
 #alias ex='start .'
 if [ -f ~/bin/ssh-homma@daniel-soft ]; then
 	source ~/bin/ssh-homma@daniel-soft
