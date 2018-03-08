@@ -43,7 +43,7 @@ let g:ctrlp_root_markers = ['Gemfile', 'pom.xml', 'build.xml', 'package.json', '
 let g:ctrlp_max_height = 20								" CtrlPのウィンドウ最大高さ
 " 無視するディレクトリ
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$|_v\/(bin|obj)$',
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$|_v\/(bin|obj)$|\v[\/](node_modules|build)$|\v[\/]_ReSharper\..*$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
@@ -129,6 +129,9 @@ augroup myFileType
 	autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
 	autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufNewFile,BufRead *.md setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+	autocmd BufNewFile,BufRead *.html,*.htm setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+	autocmd BufNewFile,BufRead *.css,*.scss,*.sass setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+	autocmd BufNewFile,BufRead *.js setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 	autocmd BufNewFile,BufRead *.vb setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 	autocmd BufNewFile,BufRead *.go setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab autowrite
 augroup END
@@ -353,7 +356,7 @@ nnoremap <Leader>ml  :<C-u>MemoList<CR>
 nnoremap <Leader>mg  :<C-u>MemoGrep<CR>
 let g:memolist_memo_suffix = "md"
 let g:memolist_qfixgrep = 1
-let g:memolist_ex_cmd = 'NERDTree'
+let g:memolist_ex_cmd = 'CtrlP'
 
 " easymotion
 " `s{char}{char}{label}`
