@@ -20,8 +20,9 @@
 	s = status --short --branch
 	cch = "!f() { git cherry -v $@ | awk '{ if($1 == \"+\"){ color = \"green\" } if($1 == \"-\"){ color = \"red\" } cmd = \"git show --date=short --no-notes --pretty=format:\\047%C\" color $1 \" %h %Cgreen%cd %Cblue%cn%x09%Creset%s\\047 --summary \" $2; cmd | getline t; close(cmd); print t }' ;}; f"
 	xb = !cmd //c \"c:\\Program Files\\GitExtensions\\GitExtensions.exe\" browse cd &
-	xa = !cmd //c sh -c '/c/Program\\ Files/GitExtensions/GitExtensions.exe browse \"$(git rev-parse --show-toplevel)\"' &
-	xc = !sh -c '/c/Program\\ Files/GitExtensions/GitExtensions.exe commit \"$(git rev-parse --show-toplevel)\"' &
+	xc = !cmd //c \"c:\\Program Files\\GitExtensions\\GitExtensions.exe\" commit cd &
+	x2a = !cmd //c sh -c '/c/Program\\ Files/GitExtensions/GitExtensions.exe browse \"$(git rev-parse --show-toplevel)\"' &
+	x2c = !sh -c '/c/Program\\ Files/GitExtensions/GitExtensions.exe commit \"$(git rev-parse --show-toplevel)\"' &
 	fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
 	cpush = !git push origin `git rev-parse --abbrev-ref HEAD`
 	pr = !sh -c 'GITHUB_TOKEN=9ab9ecae00148e83020d89fcb14e2afab547d248 GITHUB_HOST=auto3tsv132 BROWSER=/c/PROGRA~1/MOZILL~1/firefox.exe hub browse -- compare/$(git symbolic-ref --short HEAD)"?expand=1#start-of-content"'
