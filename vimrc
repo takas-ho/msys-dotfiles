@@ -101,7 +101,7 @@ if s:is_windows || s:is_cygwin
 		"colorscheme industry
 		colorscheme pablo
 	else
-		colorscheme molokai
+		colorscheme industry
 	endif
 else
 	colorscheme industry
