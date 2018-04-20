@@ -191,10 +191,11 @@ set wildmode=list:longest				" コマンドラインの補完
 
 " Tab
 " 不可視文字を可視化
+set list
 if &term == 'win32'
-	set list listchars=tab:>-,trail:･,precedes:<,extends:>
+	set listchars=tab:>-,trail:･,precedes:<,extends:>
 else
-	set list listchars=tab:\▸\ ,trail:_,eol:↲,extends:»,precedes:«,nbsp:%
+	set listchars=tab:\▸\ ,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 endif
 " 全角スペースの可視化
 if has("syntax")
