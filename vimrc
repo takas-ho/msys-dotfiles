@@ -48,6 +48,8 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
+Plug 'tpope/vim-surround'
+
 Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_use_migemo = 1
 
@@ -63,14 +65,10 @@ elseif 16 <= &t_Co
 	set showtabline=2	" タブを常に表示
 endif
 
-Plug 'scrooloose/syntastic', { 'tag' : '3.8.0' }
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_markdown_checkers = ['textlint']
-let g:syntastic_text_checkers = ['textlint']
+Plug 'w0rp/ale'
+let g:ale_linters = { 'markdown' : ['textlint'], }
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
 
 " edit
 if !s:is_windows && !s:is_cygwin
@@ -99,7 +97,7 @@ if s:is_windows || s:is_cygwin
 		"colorscheme industry
 		colorscheme pablo
 	else
-		colorscheme molokai
+		colorscheme industry
 	endif
 else
 	colorscheme industry
@@ -126,9 +124,13 @@ set softtabstop=4
 set shiftwidth=4
 augroup myFileType
 	autocmd!
+	autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
+augroup myFileTypeIndent
+	autocmd!
 	autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
 	autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
-	autocmd BufNewFile,BufRead *.md setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+	autocmd filetype markdown setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 	autocmd BufNewFile,BufRead *.html,*.htm setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 	autocmd BufNewFile,BufRead *.css,*.scss,*.sass setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 	autocmd BufNewFile,BufRead *.js setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
@@ -193,10 +195,11 @@ set wildmode=list:longest				" コマンドラインの補完
 
 " Tab
 " 不可視文字を可視化
+set list
 if &term == 'win32'
-	set list listchars=tab:>-,trail:･,precedes:<,extends:>
+	set listchars=tab:>-,trail:･,precedes:<,extends:>
 else
-	set list listchars=tab:\▸\ ,trail:_,eol:↲,extends:»,precedes:«,nbsp:%
+	set listchars=tab:\▸\ ,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 endif
 " 全角スペースの可視化
 if has("syntax")
