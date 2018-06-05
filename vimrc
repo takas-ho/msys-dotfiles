@@ -79,6 +79,8 @@ endif
 Plug 'fatih/vim-go'
 Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 
+Plug 'leafgarland/typescript-vim'
+
 " colorscheme
 Plug 'tomasr/molokai'
 Plug 'keith/parsec.vim'
@@ -125,6 +127,7 @@ set shiftwidth=4
 augroup myFileType
 	autocmd!
 	autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+	autocmd BufNewFile,BufRead *.ts set filetype=typescript
 augroup END
 augroup myFileTypeIndent
 	autocmd!
