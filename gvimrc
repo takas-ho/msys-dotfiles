@@ -9,6 +9,14 @@ endif
 colorscheme  desert
 set background=dark
 
+if has('gui_macvim')
+    set showtabline=2	" タブを常に表示
+    set transparency=5	" 透明度を指定
+    set antialias
+    set guifont=Osaka－等幅:h18
+    set linespace=0
+    silent! colorscheme parsec
+endif
 if has('kaoriya')
 	set showtabline=2	" タブを常に表示
 	autocmd GUIEnter * set transparency=240
