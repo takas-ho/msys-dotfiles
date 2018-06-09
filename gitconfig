@@ -27,7 +27,7 @@
 	x2c = !sh -c '/c/Program\\ Files/GitExtensions/GitExtensions.exe commit \"$(git rev-parse --show-toplevel)\"' &
 	fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
 	cpush = "!f(){ if [ \"$1\" = \"-f\" ]; then ARGS=\"$1 ${2:-origin}\"; else ARGS=${1:-origin}; fi; git push $ARGS `git rev-parse --abbrev-ref HEAD`;};f"
-	pr = "!f(){ REMOTEURL=`git remote -v|grep ${1:-origin}|grep push|sed -e \"s/\\.git .*$//g\"|sed -e \"s/^.*@//g\"`;/c/PROGRA~1/MOZILL~1/firefox.exe http://`echo $REMOTEURL | sed -e \"s/:.*$//g\"`/`echo $REMOTEURL | sed -e \"s/^.*://g\"`/compare/`git rev-parse --abbrev-ref HEAD`\"?expand=1#start-of-content\";};f"
+	pr = "!f(){ REMOTEURL=`git remote -v|grep ${1:-origin}|grep push|sed -e \"s/\\.git .*$//g\"|sed -e \"s/^.*@//g\"`;/c/PROGRA~1/MOZILL~1/firefox.exe http://`echo $REMOTEURL | sed -e \"s/:/\\//g\"`/compare/`git rev-parse --abbrev-ref HEAD`\"?expand=1#start-of-content\";};f"
 	tp = !git tag -l | xargs git tag -d && git fetch -t
 [push]
 	default = simple
