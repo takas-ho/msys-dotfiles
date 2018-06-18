@@ -254,6 +254,8 @@ set wrapscan
 " 検索語をハイライト表示
 set hlsearch
 
+let &grepprg="grep -rnIH --exclude=.git --exclude-dir=.hg --exclude-dir=.svn --exclude=tags"
+
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>	" ESC連打でハイライト解除
 " 上下移動「論理行」「表示行」を入れ替え
 noremap j gj
