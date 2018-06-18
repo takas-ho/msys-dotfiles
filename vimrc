@@ -9,6 +9,9 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932
 
 scriptencoding=utf-8
 
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
+
 if has('vim_starting')
 	set nocompatible
 	set runtimepath+=~/.vim/plugged/vim-plug
