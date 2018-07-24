@@ -6,8 +6,6 @@
 	autocrlf = true
 	editor = ~/bin/vim
 	attributesfile = ~/.gitattributes
-	preloadindex = true
-	fscache = true
 
 [alias]
 	co = "!f(){ git checkout $*;git submodule update --init;git config branch.\"$(git rev-parse --abbrev-ref HEAD)\".description;};f"
@@ -50,5 +48,3 @@
 	keepBackup = false
 [ghq]
 	root = ~/go/src
-[gc]
-	auto = 256
