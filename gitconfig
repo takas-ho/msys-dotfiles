@@ -48,3 +48,5 @@
 	keepBackup = false
 [ghq]
 	root = ~/go/src
+[http]
+	sslVerify = false
