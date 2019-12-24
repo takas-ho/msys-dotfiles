@@ -57,6 +57,9 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'kana/vim-textobj-user'
+Plug 'pocke/vim-textobj-markdown' " markdownのコードブロックをtextobj化
 
 Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_use_migemo = 1
