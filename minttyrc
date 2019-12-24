@@ -1,12 +1,12 @@
 BoldAsFont=-1
-Font=MeiryoKe_Gothic
+Font=Consolas
 FontSmoothing=full
 Locale=ja_JP
 Charset=UTF-8
 Columns=200
 Rows=60
 Term=xterm-256color
-Transparency=low
+Transparency=off
 CtrlShiftShortcuts=yes
 
 BackgroundColour=13,25,38

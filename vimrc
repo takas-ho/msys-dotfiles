@@ -9,6 +9,9 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932
 
 scriptencoding=utf-8
 
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
+
 if has('vim_starting')
 	set nocompatible
 	set runtimepath+=~/.vim/plugged/vim-plug
@@ -250,6 +253,8 @@ set incsearch
 set wrapscan
 " 検索語をハイライト表示
 set hlsearch
+
+let &grepprg="grep -rnIH --exclude=.git --exclude-dir=.hg --exclude-dir=.svn --exclude=tags"
 
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>	" ESC連打でハイライト解除
 " 上下移動「論理行」「表示行」を入れ替え
