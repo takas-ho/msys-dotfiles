@@ -34,11 +34,9 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'ryanolsonx/vim-lsp-javascript'
+Plug 'ryanolsonx/vim-lsp-javascript', { 'for': ['javascript']}
 
 Plug 'vim-jp/vimdoc-ja'
-Plug 'rcmdnk/vim-markdown', { 'for': ['markdown']}
-Plug 'rhysd/vim-gfm-syntax', { 'for': ['markdown']}
 Plug 'glidenote/memolist.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
 Plug 'justinmk/vim-dirvish'
@@ -56,13 +54,24 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
+" markdown
+Plug 'godlygeek/tabular', { 'for': ['markdown']}
+Plug 'plasticboy/vim-markdown', { 'for': ['markdown']}
+Plug 'rhysd/vim-gfm-syntax', { 'for': ['markdown']}
+
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'kana/vim-textobj-user'
 Plug 'pocke/vim-textobj-markdown' " markdownのコードブロックをtextobj化
 
+Plug 'thinca/vim-quickrun'
+
 Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_use_migemo = 1
+Plug 'tpope/vim-unimpaired'
+
+Plug 'cocopon/vaffle.vim'
+let g:vaffle_show_hidden_files = 1
 
 Plug 'tpope/vim-fugitive' | Plug 'gregsexton/gitv', { 'on': ['Gitv']}
 let g:Gitv_OpenHorizontal = 1
@@ -76,22 +85,34 @@ elseif 16 <= &t_Co
 	set showtabline=2	" タブを常に表示
 endif
 
-Plug 'w0rp/ale'
+Plug 'kannokanno/previm'
+if s:is_mac
+	let g:previm_open_cmd = 'open -a Safari'
+endif
+
+"Plug 'w0rp/ale'
 let g:ale_linters = { 'markdown' : ['textlint'], }
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
+
+" filetype
+Plug 'yuki2cb/vim-vbnet'
 
 " edit
 if !s:is_windows && !s:is_cygwin
 	Plug 'SirVer/ultisnips'
 endif
 
+" javascript
+Plug 'pangloss/vim-javascript'
+let g:javascript_plugin_flow = 1
+Plug 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
+Plug 'leshill/vim-json'
+
 " lang
 Plug 'fatih/vim-go'
 Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-
-Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
 
 " colorscheme
 Plug 'tomasr/molokai'
@@ -150,6 +171,7 @@ set shiftwidth=4
 augroup myFileType
 	autocmd!
 	autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+	autocmd BufNewFile,BufRead *.vb set filetype=vbnet
 	autocmd BufNewFile,BufRead *.ts set filetype=typescript
 augroup END
 augroup myFileTypeIndent
@@ -160,7 +182,7 @@ augroup myFileTypeIndent
 	autocmd filetype typescript setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 	autocmd BufNewFile,BufRead *.html,*.htm setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 	autocmd BufNewFile,BufRead *.css,*.scss,*.sass setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-	autocmd BufNewFile,BufRead *.js setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+	autocmd BufNewFile,BufRead *.js,*.json setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 	autocmd BufNewFile,BufRead *.vb setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 	autocmd BufNewFile,BufRead *.go setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab autowrite
 augroup END
@@ -389,7 +411,7 @@ nnoremap <Leader>ml  :<C-u>MemoList<CR>
 nnoremap <Leader>mg  :<C-u>MemoGrep<CR>
 let g:memolist_memo_suffix = "md"
 let g:memolist_qfixgrep = 1
-let g:memolist_ex_cmd = 'CtrlP'
+let g:memolist_ex_cmd = 'NERDTree'
 
 " easymotion
 " `s{char}{char}{label}`
