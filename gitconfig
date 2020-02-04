@@ -19,8 +19,8 @@
 	ll = log --graph -n 200 --date=iso --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%Creset'
 	s = status --short --branch
 	cch = "!f() { git cherry -v $@ | awk '{ if($1 == \"+\"){ color = \"green\" } if($1 == \"-\"){ color = \"red\" } cmd = \"git show --date=short --no-notes --pretty=format:\\047%C\" color $1 \" %h %Cgreen%cd %Cblue%cn%x09%Creset%s\\047 --summary \" $2; cmd | getline t; close(cmd); print t }' ;}; f"
-	xb = !cmd //c \"c:\\Program Files\\GitExtensions\\GitExtensions.exe\" browse cd &
-	xc = !cmd //c \"c:\\Program Files\\GitExtensions\\GitExtensions.exe\" commit cd &
+	xb = !cmd //c \"c:\\Program Files\\GitExtensions\\GitExtensions.exe\" browse cd > /dev/null 2>&1 < /dev/null &
+	xc = !cmd //c \"c:\\Program Files\\GitExtensions\\GitExtensions.exe\" commit cd > /dev/null 2>&1 < /dev/null &
 	x2a = !cmd //c sh -c '/c/Program\\ Files/GitExtensions/GitExtensions.exe browse \"$(git rev-parse --show-toplevel)\"' &
 	x2c = !sh -c '/c/Program\\ Files/GitExtensions/GitExtensions.exe commit \"$(git rev-parse --show-toplevel)\"' &
 	fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
