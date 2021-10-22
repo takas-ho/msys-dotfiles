@@ -29,6 +29,7 @@
 	mr = "!f(){ REMOTEURL=`git remote -v|grep ${1:-gitlab}|grep push|sed -e \"s/\\.git .*$//g\" -e \"s/(push)$//g\" -e \"s/^.*://g\"`;/c/PROGRA~1/UNGOOG~1/chrome.exe https://gitlab.com/`echo $REMOTEURL`/-/merge_requests/new?merge_request%5Bsource_branch%5D=`git rev-parse --abbrev-ref HEAD`;};f"
 	tp = !git tag -l | xargs git tag -d && git fetch -t
 	delete-merged = !"git branch --merged | grep -v '*' | xargs -I % git branch -d %"
+	rt = "!f(){ REMOTEURL=`git remote -v|grep origin|grep push|sed -e \"s/\\.git .*$//g\" -e \"s/(push)$//g\" -e \"s/^.*@//g\"`;/c/PROGRA~1/UNGOOG~1/chrome.exe http://`echo $REMOTEURL | sed -e \"s/:/\\//g\"`/releases/edit/$1;};f"
 [push]
 	default = simple
 [fetch]
