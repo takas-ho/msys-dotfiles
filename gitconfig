@@ -16,11 +16,11 @@
 	mt = mergetool
 	d = difftool
 	l = log --graph -n 30 --date=iso --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%Creset'
-	ll = log --graph -n 200 --date=iso --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%Creset'
+	ll = log --graph -n 1024 --date=iso --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%Creset'
 	s = status --short --branch
 	cch = "!f() { git cherry -v $@ | awk '{ if($1 == \"+\"){ color = \"green\" } if($1 == \"-\"){ color = \"red\" } cmd = \"git show --date=short --no-notes --pretty=format:\\047%C\" color $1 \" %h %Cgreen%cd %Cblue%cn%x09%Creset%s\\047 --summary \" $2; cmd | getline t; close(cmd); print t }' ;}; f"
-	xb = !cmd //c \"c:\\Program Files\\GitExtensions\\GitExtensions.exe\" browse cd > /dev/null 2>&1 < /dev/null &
-	xc = !cmd //c \"c:\\Program Files\\GitExtensions\\GitExtensions.exe\" commit cd > /dev/null 2>&1 < /dev/null &
+	xb = !cmd //c \"c:\\Program Files (x86)\\GitExtensions\\GitExtensions.exe\" browse cd > /dev/null 2>&1 < /dev/null &
+	xc = !cmd //c \"c:\\Program Files (x86)\\GitExtensions\\GitExtensions.exe\" commit cd > /dev/null 2>&1 < /dev/null &
 	x2a = !cmd //c sh -c '/c/Program\\ Files/GitExtensions/GitExtensions.exe browse \"$(git rev-parse --show-toplevel)\"' &
 	x2c = !sh -c '/c/Program\\ Files/GitExtensions/GitExtensions.exe commit \"$(git rev-parse --show-toplevel)\"' &
 	fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
@@ -29,6 +29,7 @@
 	mr = "!f(){ REMOTEURL=`git remote -v|grep ${1:-gitlab}|grep push|sed -e \"s/\\.git .*$//g\" -e \"s/(push)$//g\" -e \"s/^.*://g\"`;/c/PROGRA~1/UNGOOG~1/chrome.exe https://gitlab.com/`echo $REMOTEURL`/-/merge_requests/new?merge_request%5Bsource_branch%5D=`git rev-parse --abbrev-ref HEAD`;};f"
 	tp = !git tag -l | xargs git tag -d && git fetch -t
 	delete-merged = !"git branch --merged | grep -v '*' | xargs -I % git branch -d %"
+	rt = "!f(){ REMOTEURL=`git remote -v|grep origin|grep push|sed -e \"s/\\.git .*$//g\" -e \"s/(push)$//g\" -e \"s/^.*@//g\"`;/c/PROGRA~1/UNGOOG~1/chrome.exe http://`echo $REMOTEURL | sed -e \"s/:/\\//g\"`/releases/edit/$1;};f"
 [push]
 	default = simple
 [fetch]
